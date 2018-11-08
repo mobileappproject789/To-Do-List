@@ -1,0 +1,4 @@
+#Wed Nov 07 18:21:27 EST 2018
+base.0=C\:\\Users\\IT-Lab_Local\\Downloads\\ToDoList2-2018\\ToDoList2\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\1
+path.0=classes.dex
+renamed.0=classes.dex
