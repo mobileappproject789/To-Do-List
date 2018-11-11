@@ -22,7 +22,7 @@ public class CreateItem extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         if(extras != null)
         {
-            ((TextView)findViewById(R.id.textView)).setText(extras.getString("messagefrommain"));
+            ((TextView)findViewById(R.id.textView)).setText(extras.getString("mess"));
         }
 
         Listitem = findViewById(R.id.editText);

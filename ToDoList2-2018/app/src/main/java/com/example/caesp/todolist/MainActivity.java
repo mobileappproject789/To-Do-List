@@ -14,79 +14,43 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    ArrayList<String> items;
-    ArrayAdapter<String> itemsAdapter;
-    ListView lvItems;
-    Button button;
-    Button button2;
-    ArrayAdapter<String> trashAdapter;
-    ListView itemtrash;
-    ArrayList<String> trash;
 
+    ListView ListofList;
+    ArrayList<String> Lists;
+    ArrayAdapter<String> ListAdapter;
+    Button button;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        lvItems = (ListView)  findViewById(R.id.lvItems);
-        items = new ArrayList<String>();
-        itemsAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items);
-        lvItems.setAdapter(itemsAdapter);
+        ListofList = findViewById(R.id.LofL);
+        Lists = new ArrayList<String>();
+        ListAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, Lists);
+        ListofList.setAdapter(ListAdapter);
 
-        itemtrash = findViewById(R.id.itemtrash);
-        trash = new ArrayList<String>();
-        trashAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, trash);
-        itemtrash.setAdapter(trashAdapter);
+        button = findViewById(R.id.AddList);
+        Lists.add("Test");
 
-        button = findViewById(R.id.AddItem);
-        button2 = findViewById(R.id.ClearTrash);
-
-
-
-
-        items.add("First Item");
-        items.add("Second Item");
+        ListofList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent i = new Intent(getBaseContext(), ItemList.class);
+                String s = (String) ListofList.getItemAtPosition(position);
+                i.putExtra("Title", s);
+                startActivity(i);
+            }
+        });
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getBaseContext(), CreateItem.class);
-                String message = "Enter your item below.";
-                i.putExtra("messagefrommain", message);
+                String message = "Please enter the name of the list below.";
+                i.putExtra("mess", message);
                 startActivityForResult(i, 1);
             }
         });
-
-        button2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                trashAdapter.clear();
-                trashAdapter.notifyDataSetChanged();
-            }
-        });
-
-        lvItems.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String s = itemsAdapter.getItem(position);
-                itemsAdapter.remove(s);
-                trashAdapter.add(s);
-                itemsAdapter.notifyDataSetChanged();
-                trashAdapter.notifyDataSetChanged();
-            }
-        });
-
-        itemtrash.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String s = trashAdapter.getItem(position);
-                items.add(s);
-                trash.remove(s);
-                itemsAdapter.notifyDataSetChanged();
-                trashAdapter.notifyDataSetChanged();
-            }
-        });
-
 
 
 
@@ -95,10 +59,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult (int requestCode, int resultCode, Intent data) {
         String item = (data.getStringExtra("item"));
-        items.add(item);
-        itemsAdapter.notifyDataSetChanged();
+        Lists.add(item);
+
+        ListAdapter.notifyDataSetChanged();
     }
-
-
-
 }
