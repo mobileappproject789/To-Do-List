@@ -1,6 +1,8 @@
 package com.example.caesp.todolist;
 
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -21,6 +23,9 @@ public class ItemList extends AppCompatActivity {
     Button button;
     Button button2;
 
+    ConstraintLayout myLayout2;
+    AnimationDrawable animationDrawable;
+
     ArrayAdapter<String> trashAdapter;
     ArrayList<String> trash;
     ListView itemtrash;
@@ -31,6 +36,15 @@ public class ItemList extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_list);
+
+        myLayout2 = (ConstraintLayout) findViewById(R.id.myLayout2);
+
+        animationDrawable = (AnimationDrawable) myLayout2.getBackground();
+        animationDrawable.setEnterFadeDuration(4500);
+        animationDrawable.setExitFadeDuration(4500);
+        animationDrawable.start();
+
+
         Title = findViewById(R.id.Title);
         //set up Item List
         customItems = new ArrayList<Item>();

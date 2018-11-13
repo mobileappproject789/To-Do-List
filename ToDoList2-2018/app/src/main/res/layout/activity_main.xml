@@ -2,10 +2,11 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@drawable/my_bg_anim"
+    android:id="@+id/myLayout3">
 
     <ListView
         android:id="@+id/LofL"
@@ -18,7 +19,7 @@
 
     <Button
         android:id="@+id/AddList"
-        android:layout_width="0dp"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginBottom="10dp"
@@ -26,11 +27,17 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/lvItems" />
+        app:layout_constraintTop_toBottomOf="@id/lvItems"
+        android:background="@drawable/button_border"
+        android:textColor="@color/black"
+        android:textSize="15dp"
+        android:minHeight="40dp"
+        android:minWidth="80dp"
+        android:fontFamily="sans-serif-smallcaps"/>
 
     <Button
         android:id="@+id/ClearTrash"
-        android:layout_width="0dp"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
@@ -38,7 +45,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
-        app:layout_constraintTop_toBottomOf="@id/lvItems" />
+        app:layout_constraintTop_toBottomOf="@id/lvItems"
+        android:background="@drawable/button_border"
+        android:textColor="@color/black"
+        android:textSize="15dp"
+        android:minHeight="40dp"
+        android:minWidth="80dp"
+        android:fontFamily="sans-serif-smallcaps"/>
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline3"
