@@ -31,6 +31,7 @@ public class UsersAdapter extends ArrayAdapter<Item> {
         TextView tvHome = (TextView) convertView.findViewById(R.id.tv2);
         // Populate the data into the template view using the data object
         tvName.setText(user.getIt());
+        String s = ItemList.Title.getText().toString();
         tvHome.setText(ItemList.Title.getText());
         // Return the completed view to render on screen
         return convertView;

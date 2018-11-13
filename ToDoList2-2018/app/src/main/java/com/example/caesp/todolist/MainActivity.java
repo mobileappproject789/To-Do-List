@@ -10,7 +10,10 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
+import java.sql.Array;
 import java.util.ArrayList;
+
+import javax.security.auth.Subject;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<String> Lists;
     ArrayAdapter<String> ListAdapter;
     Button button;
+    ArrayList<String> Subject = new ArrayList<String>();
+    ArrayList<String> tit;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent i = new Intent(getBaseContext(), ItemList.class);
                 String s = (String) ListofList.getItemAtPosition(position);
                 i.putExtra("Title", s);
-                startActivity(i);
+                startActivityForResult(i, 2);
             }
         });
 
@@ -58,9 +63,28 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult (int requestCode, int resultCode, Intent data) {
-        String item = (data.getStringExtra("item"));
-        Lists.add(item);
+        Bundle extras = getIntent().getExtras();
 
-        ListAdapter.notifyDataSetChanged();
+        if (extras == null) {
+
+        }
+        if (extras != null) {
+            String item = (data.getStringExtra("item"));
+            Lists.add(item);
+            ListAdapter.notifyDataSetChanged();
+        }
+
+        if (requestCode == 2) {
+            int i = 1;
+            int size = (data.getIntExtra("ListSize", 0));
+            while (i <= size) {
+                String item = (data.getStringExtra("item" + i));
+                Subject.add(item);
+
+                i++;
+            }
+        }
     }
+
+
 }

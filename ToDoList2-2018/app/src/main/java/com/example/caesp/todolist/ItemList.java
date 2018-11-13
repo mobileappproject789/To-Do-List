@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class ItemList extends AppCompatActivity {
 
-    ArrayList<Item> customItems;
+    static ArrayList<Item> customItems;
     ArrayAdapter<Item> adapter;
     ListView lvItems;
 
@@ -54,8 +54,8 @@ public class ItemList extends AppCompatActivity {
 
 
 
-        customItems.add(new Item("First Item", ""));
-        customItems.add(new Item("Second Item", ""));
+        customItems.add(new Item("First Item", Title.getText().toString()));
+        customItems.add(new Item("Second Item", Title.getText().toString()));
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -104,11 +104,40 @@ public class ItemList extends AppCompatActivity {
     }
 
     @Override
-    protected void onActivityResult (int requestCode, int resultCode, Intent data) {
-        String item = (data.getStringExtra("item"));
-        customItems.add(new Item(item, ""));
+    public void onBackPressed() {
 
-        adapter.notifyDataSetChanged();
+        Intent i = new Intent();
+        for (Item s : customItems){
+            int b = 1;
+            while (b < customItems.size()) {
+                int size = customItems.size();
+                String t = s.getIt();
+                String u = s.gettitle();
+                i.putExtra("ListSize", size);
+                i.putExtra("item" + b, t);
+                i.putExtra("title" + b, u);
+                setResult(2, i);
+                b = b + 1;
+                finish();
+            }
+        }
+
+    }
+
+    @Override
+    protected void onActivityResult (int requestCode, int resultCode, Intent data) {
+
+        Bundle extras = getIntent().getExtras();
+
+        if (extras == null) {
+
+        }
+        if (extras != null) {
+            String item = (data.getStringExtra("item"));
+            customItems.add(new Item(item, ""));
+            adapter.notifyDataSetChanged();
+        }
+
     }
 
 }
