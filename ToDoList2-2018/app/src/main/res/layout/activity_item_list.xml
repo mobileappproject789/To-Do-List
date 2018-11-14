@@ -4,26 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ItemList"
-    android:background="@drawable/my_bg_anim"
-    android:id="@+id/myLayout2">
+    tools:context=".ItemList">
 
     <ListView
-        android:fontFamily="sans-serif-smallcaps"
         android:id="@+id/lvItems"
         android:layout_width="0dp"
+
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@id/AddItem"
         app:layout_constraintEnd_toStartOf="@id/guideline2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/guideline4"
-        android:textColor="@color/black">
+        app:layout_constraintTop_toTopOf="@id/guideline4">
 
     </ListView>
 
     <Button
         android:id="@+id/AddItem"
-        android:layout_width="130dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="6dp"
         android:layout_marginBottom="10dp"
@@ -31,17 +28,11 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/lvItems"
-        android:background="@drawable/button_border"
-        android:textColor="@color/black"
-        android:textSize="15dp"
-        android:minHeight="40dp"
-        android:minWidth="80dp"
-        android:fontFamily="sans-serif-smallcaps"/>
+        app:layout_constraintTop_toBottomOf="@id/lvItems" />
 
     <Button
         android:id="@+id/ClearTrash"
-        android:layout_width="130dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
@@ -49,13 +40,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toBottomOf="@id/lvItems"
-        android:background="@drawable/button_border"
-        android:textColor="@color/black"
-        android:textSize="15dp"
-        android:minHeight="40dp"
-        android:minWidth="80dp"
-        android:fontFamily="sans-serif-smallcaps"/>
+        app:layout_constraintTop_toBottomOf="@id/lvItems" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline2"
@@ -71,9 +56,7 @@
         app:layout_constraintBottom_toTopOf="@id/ClearTrash"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/guideline2"
-        app:layout_constraintTop_toTopOf="@id/guideline4"
-        android:fontFamily="sans-serif-smallcaps"
-        android:textColor="@color/black"/>
+        app:layout_constraintTop_toTopOf="@id/guideline4"/>
 
     <TextView
         android:id="@+id/Title"
@@ -84,9 +67,7 @@
         app:layout_constraintBottom_toBottomOf="@id/guideline4"
         app:layout_constraintEnd_toEndOf="@id/guideline2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:fontFamily="sans-serif-smallcaps"
-        android:textColor="@color/black"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/trash"
@@ -96,17 +77,13 @@
         app:layout_constraintBottom_toBottomOf="@id/guideline4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/guideline2"
-        app:layout_constraintTop_toTopOf="parent"
-        android:fontFamily="sans-serif-smallcaps"
-        android:textColor="@color/black"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="31dp"
-        android:fontFamily="sans-serif-smallcaps"
-        android:textColor="@color/black"/>
+        app:layout_constraintGuide_begin="31dp" />
 
 </android.support.constraint.ConstraintLayout>

@@ -2,8 +2,6 @@ package com.example.caesp.todolist;
 
 
 import android.content.Intent;
-import android.graphics.drawable.AnimationDrawable;
-import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,11 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-
-import java.sql.Array;
 import java.util.ArrayList;
-
-import javax.security.auth.Subject;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,23 +18,12 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<String> Lists;
     ArrayAdapter<String> ListAdapter;
     Button button;
-
-    ConstraintLayout myLayout3;
-    AnimationDrawable animationDrawable;
-
-    ArrayList<String> Subject = new ArrayList<String>();
-    ArrayList<String> tit;
+    ArrayList<String> Subject = new ArrayList<>();
+    int Size = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        myLayout3 = (ConstraintLayout) findViewById(R.id.myLayout3);
-
-        animationDrawable = (AnimationDrawable) myLayout3.getBackground();
-        animationDrawable.setEnterFadeDuration(4500);
-        animationDrawable.setExitFadeDuration(4500);
-        animationDrawable.start();
 
         ListofList = findViewById(R.id.LofL);
         Lists = new ArrayList<String>();
@@ -56,6 +39,12 @@ public class MainActivity extends AppCompatActivity {
                 Intent i = new Intent(getBaseContext(), ItemList.class);
                 String s = (String) ListofList.getItemAtPosition(position);
                 i.putExtra("Title", s);
+                i.putExtra("size", Size);
+                int a = 0;
+                for (String t : Subject) {
+                    i.putExtra("Item" + a, t);
+                    a++;
+                }
                 startActivityForResult(i, 2);
             }
         });
@@ -64,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getBaseContext(), CreateItem.class);
-                String message = "Enter the name of the list.";
+                String message = "Please enter the name of the list below.";
                 i.putExtra("mess", message);
                 startActivityForResult(i, 1);
             }
@@ -78,24 +67,31 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult (int requestCode, int resultCode, Intent data) {
         Bundle extras = getIntent().getExtras();
 
-        if (extras == null) {
+        if (data == null) {
 
         }
-        if (extras != null) {
-            String item = (data.getStringExtra("item"));
-            Lists.add(item);
-            ListAdapter.notifyDataSetChanged();
+        if (data != null) {
+            if (requestCode == 1) {
+                String item = (data.getStringExtra("item"));
+                Lists.add(item);
+                ListAdapter.notifyDataSetChanged();
+            }
         }
 
         if (requestCode == 2) {
-            int i = 1;
+            ArrayList<String> subject = new ArrayList<String>();
+            int i = 0;
+            assert data != null;
             int size = (data.getIntExtra("ListSize", 0));
+            Size = size;
             while (i <= size) {
                 String item = (data.getStringExtra("item" + i));
-                Subject.add(item);
+                subject.add(item);
 
                 i++;
             }
+
+            Subject = subject;
         }
     }
 

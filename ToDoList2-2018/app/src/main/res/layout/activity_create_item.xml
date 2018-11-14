@@ -4,10 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/my_bg_anim"
-    android:id="@+id/myLayout"
-    tools:context=".CreateItem" >
-
+    tools:context=".CreateItem">
 
     <EditText
         android:id="@+id/editText"
@@ -20,9 +17,6 @@
         android:ems="10"
         android:inputType="text"
         android:textAlignment="center"
-        android:textColor="@color/black"
-        android:fontFamily="sans-serif-smallcaps"
-        android:hint="Milk, Eggs, Juice, etc."
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -43,10 +37,8 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:text="Enter your Task Below"
+        android:text="TextView"
         android:textSize="20sp"
-        android:textColor="@color/black"
-        android:fontFamily="sans-serif-smallcaps"
         app:layout_constraintBottom_toTopOf="@+id/editText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -60,19 +52,13 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="3dp"
-        android:background="@drawable/button_border"
         android:text="Add Item"
-        android:textColor="@color/black"
-        android:textSize="15dp"
-        android:minHeight="50dp"
-        android:minWidth="120dp"
-        android:fontFamily="sans-serif-smallcaps"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.195"
+        app:layout_constraintHorizontal_bias="0.275"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText"
-        app:layout_constraintVertical_bias="0.532" />
+        app:layout_constraintVertical_bias="0.535" />
 
     <Button
         android:id="@+id/AddCreate"
@@ -82,18 +68,12 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:background="@drawable/button_border"
         android:text="Add and Create"
-        android:textColor="@color/black"
-        android:textSize="15dp"
-        android:minWidth="120dp"
-        android:minHeight="50dp"
-        android:fontFamily="sans-serif-smallcaps"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.289"
         app:layout_constraintStart_toEndOf="@+id/Add"
         app:layout_constraintTop_toBottomOf="@+id/editText"
-        app:layout_constraintVertical_bias="0.545" />
+        app:layout_constraintVertical_bias="0.535" />
 
 </android.support.constraint.ConstraintLayout>
