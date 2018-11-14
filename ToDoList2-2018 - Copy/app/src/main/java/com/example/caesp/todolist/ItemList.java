@@ -130,6 +130,7 @@ public class ItemList extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Item s = adapter2.getItem(position);
                 trashAdapter.add(s);
+                adapter.remove(s);
                 adapter2.remove(s);
                 assert s != null;
                 adapter2.notifyDataSetChanged();
@@ -142,6 +143,7 @@ public class ItemList extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Item s = trashAdapter.getItem(position);
                 adapter2.add(s);
+                adapter.add(s);
                 trash.remove(s);
                 adapter2.notifyDataSetChanged();
                 trashAdapter.notifyDataSetChanged();
