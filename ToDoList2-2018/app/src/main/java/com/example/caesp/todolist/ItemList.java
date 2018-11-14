@@ -28,8 +28,13 @@ public class ItemList extends AppCompatActivity {
     Button button;
     Button button2;
 
+<<<<<<< HEAD
     ArrayAdapter<Item> trashAdapter;
     ArrayList<Item> trash;
+=======
+    ArrayAdapter<String> trashAdapter;
+    ArrayList<String> trash;
+>>>>>>> parent of 064688f... Styled
     ListView itemtrash;
     static TextView Title;
     String Tit;

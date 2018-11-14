@@ -18,9 +18,14 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<String> Lists;
     ArrayAdapter<String> ListAdapter;
     Button button;
+<<<<<<< HEAD
     Button button2;
     ArrayList<Item> getItems = new ArrayList<>();
     int Size = 0;
+=======
+    ArrayList<String> Subject = new ArrayList<String>();
+    ArrayList<String> tit;
+>>>>>>> parent of 064688f... Styled
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,7 +68,19 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+<<<<<<< HEAD
 
+=======
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getBaseContext(), CreateItem.class);
+                String message = "Please enter the name of the list below.";
+                i.putExtra("mess", message);
+                startActivityForResult(i, 1);
+            }
+        });
+>>>>>>> parent of 064688f... Styled
 
 
 

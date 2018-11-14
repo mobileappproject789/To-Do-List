@@ -24,8 +24,25 @@
         android:layout_marginBottom="10dp"
         android:text="Add List"
         app:layout_constraintBottom_toBottomOf="parent"
+<<<<<<< HEAD
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+=======
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/lvItems" />
+
+    <Button
+        android:id="@+id/ClearTrash"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:text="Clear Trash"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+>>>>>>> parent of 064688f... Styled
         app:layout_constraintTop_toBottomOf="@id/lvItems" />
 
     <android.support.constraint.Guideline
