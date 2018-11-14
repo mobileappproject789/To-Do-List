@@ -2,6 +2,8 @@ package com.example.caesp.todolist;
 
 
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -19,12 +21,24 @@ public class MainActivity extends AppCompatActivity {
     ArrayAdapter<String> ListAdapter;
     Button button;
     Button button2;
+
+    ConstraintLayout myLayout3;
+    AnimationDrawable animationDrawable;
+
     ArrayList<Item> getItems = new ArrayList<>();
     int Size = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        myLayout3 = (ConstraintLayout) findViewById(R.id.myLayout3);
+
+        animationDrawable = (AnimationDrawable) myLayout3.getBackground();
+        animationDrawable.setEnterFadeDuration(4500);
+        animationDrawable.setExitFadeDuration(4500);
+        animationDrawable.start();
+
 
         ListofList = findViewById(R.id.LofL);
         Lists = new ArrayList<String>();

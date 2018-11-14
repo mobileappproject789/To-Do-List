@@ -1,6 +1,8 @@
 package com.example.caesp.todolist;
 
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -14,10 +16,21 @@ public class CreateItem extends AppCompatActivity {
     Button addCreate;
     EditText Listitem;
 
+    ConstraintLayout myLayout;
+    AnimationDrawable animationDrawable;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_item);
+
+        myLayout = (ConstraintLayout) findViewById(R.id.myLayout);
+
+        animationDrawable = (AnimationDrawable) myLayout.getBackground();
+        animationDrawable.setEnterFadeDuration(4500);
+        animationDrawable.setExitFadeDuration(4500);
+        animationDrawable.start();
+
 
         Bundle extras = getIntent().getExtras();
         if(extras != null)
