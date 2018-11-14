@@ -1,39 +1,25 @@
 package com.example.caesp.todolist;
 
-import java.util.ArrayList;
-
 public class Item {
 
-    String It;
-    private String title;
+    String name;
+    String title;
 
-
-
-    @Override
-    public String toString() {
-        return It;
+    public String getName() {
+        return name;
     }
 
-    public Item(String item, String title) {
-        this.It = item;
-        this.title = title;
-
-    }
-
-
-    public String getIt(){
-        return It;
-    }
-
-    public String gettitle() {
+    public String getTitle() {
         return title;
     }
 
+    public Item(String name, String title) {
+        this.name = name;
+        this.title = title;
+    }
 
-    public static ArrayList<Item> getitem() {
-        ArrayList<Item> item = new ArrayList<>();
-
-
-        return item;
+    @Override
+    public String toString() {
+        return name;
     }
 }

@@ -18,7 +18,8 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<String> Lists;
     ArrayAdapter<String> ListAdapter;
     Button button;
-    ArrayList<String> Subject = new ArrayList<>();
+    Button button2;
+    ArrayList<Item> getItems = new ArrayList<>();
     int Size = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,8 +31,18 @@ public class MainActivity extends AppCompatActivity {
         ListAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, Lists);
         ListofList.setAdapter(ListAdapter);
 
+        
         button = findViewById(R.id.AddList);
         Lists.add("Test");
+
+        ListofList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                ListofList.setSelection(position);
+                return true;
+            }
+        });
+
 
         ListofList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -41,23 +52,18 @@ public class MainActivity extends AppCompatActivity {
                 i.putExtra("Title", s);
                 i.putExtra("size", Size);
                 int a = 0;
-                for (String t : Subject) {
-                    i.putExtra("Item" + a, t);
+                for (Item it : getItems){
+                    String name = it.getName();
+                    i.putExtra("name" + a, name);
+                    String title = it.getTitle();
+                    i.putExtra("title" + a, title);
                     a++;
                 }
                 startActivityForResult(i, 2);
             }
         });
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getBaseContext(), CreateItem.class);
-                String message = "Please enter the name of the list below.";
-                i.putExtra("mess", message);
-                startActivityForResult(i, 1);
-            }
-        });
+
 
 
 
@@ -67,31 +73,31 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult (int requestCode, int resultCode, Intent data) {
         Bundle extras = getIntent().getExtras();
 
-        if (data == null) {
 
-        }
-        if (data != null) {
             if (requestCode == 1) {
                 String item = (data.getStringExtra("item"));
                 Lists.add(item);
                 ListAdapter.notifyDataSetChanged();
             }
-        }
+
 
         if (requestCode == 2) {
-            ArrayList<String> subject = new ArrayList<String>();
+            ArrayList<Item> subject = new ArrayList<>();
             int i = 0;
             assert data != null;
             int size = (data.getIntExtra("ListSize", 0));
             Size = size;
-            while (i <= size) {
-                String item = (data.getStringExtra("item" + i));
-                subject.add(item);
+            while (i <= (size - 1)) {
+                String name = (data.getStringExtra("name" + i));
+                String title = (data.getStringExtra("title" + i));
+                Item it = new Item(name, title);
+                subject.add(it);
 
                 i++;
             }
 
-            Subject = subject;
+            getItems = subject;
+            //
         }
     }
 

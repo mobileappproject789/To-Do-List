@@ -28,6 +28,21 @@ public class CreateItem extends AppCompatActivity {
         Listitem = findViewById(R.id.editText);
         addItem = findViewById(R.id.Add);
         addCreate = findViewById(R.id.AddCreate);
+        addCreate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i2 = new Intent();
+                String Item = "";
+                if (Listitem.getText().toString() == null) {
+
+                }else {
+                    Item = Listitem.getText().toString();
+                }
+                i2.putExtra("item", Item);
+                setResult(3, i2);
+                finish();
+            }
+        });
         addItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
